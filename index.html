@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MERRY CHRISTMAS 🎄</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #b91c1c;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            position: relative;
+            transition: background 1s;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: #fefce8;
+            text-shadow: 0 0 10px #22c55e, 0 0 25px #16a34a;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 12px;
+            color: #fff5f5;
+        }
+
+        .tree {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            animation: wiggle 2s infinite;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fffbeb, 0 0 25px #fef9c3;
+            }
+
+            to {
+                text-shadow: 0 0 20px #fff7ed, 0 0 45px #fde68a;
+            }
+        }
+
+        @keyframes wiggle {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(4deg);
+            }
+
+            75% {
+                transform: rotate(-4deg);
+            }
+        }
+
+        .snow-btn, .snow-btn2, .snow-btn3 {
+            margin-top: 20px;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            background: #ffffff;
+            color: #b91c1c;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+            .snow-btn:hover, .snow-btn2:hover, .snow-btn3:hover {
+                transform: scale(1.05);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+            }
+
+        .dance-overlay {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background: rgba(0,0,0,0.25);
+            z-index: 10;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .snow {
+            position: absolute;
+            top: -10px;
+            font-size: 1rem;
+            opacity: 0.9;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh);
+            }
+        }
+
+        .house {
+            position: absolute;
+            bottom: 0;
+            font-size: 2.5rem;
+        }
+
+        .house1 {
+            left: 10%;
+        }
+
+        .house2 {
+            left: 30%;
+        }
+
+        .house3 {
+            left: 50%;
+        }
+
+        .house4 {
+            left: 70%;
+        }
+
+        .house5 {
+            left: 90%;
+        }
+
+        .cat-text {
+            position: fixed;
+            bottom: 210px;
+            left: 10px;
+            font-size: 2rem;
+            color: #fff;
+            text-shadow: 1px 1px 3px #000;
+            z-index: 11;
+            max-width: 300px;
+            text-align: left;
+        }
+
+        .hello-text {
+            position: fixed;
+            top: 40%;
+            font-size: 2.5rem;
+            color: #0b3d91;
+            z-index: 12;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="tree">🎄</div>
+    <h1>MERRY CHRISTMAS</h1>
+    <p>Pablo, Emily, Frida and Mom ❤️</p>
+    <button class="snow-btn">✨ Tap Me ✨</button>
+
+    <div class="house house1">🏠❄️</div>
+    <div class="house house2">🏠❄️</div>
+    <div class="house house3">🏠❄️</div>
+    <div class="house house4">🏠❄️</div>
+    <div class="house house5">🏠❄️</div>
+
+    <script>
+    let strobeCount = 0;
+    const strobeInterval = setInterval(() => {
+      document.body.style.background = strobeCount % 2 === 0 ? '#b91c1c' : '#16a34a';
+      strobeCount++;
+    }, 150);
+
+    for (let i = 0; i < 300; i++) {
+      const snow = document.createElement('div');
+      snow.className = 'snow';
+      snow.innerText = '❄';
+      snow.style.left = Math.random() * 100 + 'vw';
+      snow.style.animationDuration = 3 + Math.random() * 5 + 's';
+      snow.style.fontSize = 8 + Math.random() * 20 + 'px';
+      snow.style.color = Math.random() < 0.5 ? '#ffffff' : '#22c55e';
+      document.body.appendChild(snow);
+    }
+
+    const btn = document.querySelector('.snow-btn');
+
+    btn.addEventListener('click', () => {
+      clearInterval(strobeInterval);
+      document.body.style.background = '#b91c1c';
+
+      const overlay = document.createElement('div');
+      overlay.className = 'dance-overlay';
+      overlay.textContent = "Merry Christmas family! I'm glad to have another Christmas with everyone, I appreciate everything we did together on this long year, and I hope to continue this towards the upcoming years. All of you guys make me happy and feel at home, happy holidays";
+      document.body.appendChild(overlay);
+
+      for (let i = 0; i < 200; i++) {
+        const snow = document.createElement('div');
+        snow.className = 'snow';
+        snow.innerText = '❄';
+        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.animationDuration = 2 + Math.random() * 4 + 's';
+        snow.style.fontSize = 6 + Math.random() * 18 + 'px';
+        snow.style.color = Math.random() < 0.5 ? '#ffffff' : '#22c55e';
+        document.body.appendChild(snow);
+      }
+
+      const btn2 = document.createElement('button');
+      btn2.className = 'snow-btn2';
+      btn2.textContent = '✨ Tap Me Again ✨';
+      document.body.appendChild(btn2);
+
+      btn2.addEventListener('click', () => {
+        const catText = document.createElement('div');
+        catText.className = 'cat-text';
+        catText.textContent = "Also can't forget Benji, Merry Christmas to him too!";
+        document.body.appendChild(catText);
+
+        const btn3 = document.createElement('button');
+        btn3.className = 'snow-btn3';
+        btn3.textContent = '✨ Tap Me Last Time ✨';
+        document.body.appendChild(btn3);
+
+        btn3.addEventListener('click', () => {
+          document.body.style.transition = 'background 2s';
+          document.body.style.background = 'linear-gradient(to bottom, #ffffff, #a0c4ff)';
+
+          const helloText = document.createElement('div');
+          helloText.className = 'hello-text';
+          helloText.textContent = "I hope everyone enjoys their gifts, MERRY CHRISTMAS 🎄❄️";
+          document.body.appendChild(helloText);
+        });
+      });
+
+      setTimeout(() => {
+        overlay.remove();
+      }, 60000);
+    });
+    </script>
+</body>
+</html>
